@@ -1,0 +1,16 @@
+.countDown {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: #000;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    width: 50%;
+    margin-bottom: 1.5rem;
+    bottom: 2rem;
+}
