@@ -12,10 +12,9 @@ const Dashboard = () => {
     bannerEndTime: initEndTime,
     bannerVisibility: initVisibility,
   } = initBanner;
-  const now = new Date().getTime();
   const [bannerLink, setBannerLink] = useState(initBannerLink);
   const [description, setDescription] = useState(initDescription);
-  const [endTime, setEndTime] = useState(now);
+  const [endTime, setEndTime] = useState(initEndTime);
   const [visibility, setVisibility] = useState(initVisibility);
 
   const handleEndTimeChange = (e) => {
@@ -69,7 +68,7 @@ const Dashboard = () => {
         <input
           type="datetime-local"
           value={new Date(
-            new Date(endTime).getTime() - new Date().getTimezoneOffset() * 60000
+            parseInt(endTime) - new Date().getTimezoneOffset() * 60000
           )
             .toISOString()
             .slice(0, 16)}

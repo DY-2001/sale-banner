@@ -8,8 +8,7 @@ const zeroTime = {
   seconds: 0,
 };
 
-const CountDownTimer = ({ bannerEndTime }) => {
-  const [timeLeft, setTimeLeft] = useState(zeroTime);
+const CountDownTimer = ({ bannerEndTime, timeLeft, setTimeLeft }) => {
   const calculateTimeLeft = () => {
     const currentTime = new Date().getTime();
     const difference = bannerEndTime - currentTime;

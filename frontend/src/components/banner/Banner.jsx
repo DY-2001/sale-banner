@@ -1,10 +1,18 @@
 import styles from "./Banner.module.css";
-import { useContext, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { BannerContext } from "../../App";
 import CountDownTimer from "../countDownTimer/CountDownTimer";
 import { useNavigate } from "react-router-dom";
 
+const zeroTime = {
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+};
+
 const Banner = () => {
+  const [timeLeft, setTimeLeft] = useState(zeroTime);
   const navigate = useNavigate();
   const { initBanner, setInitBanner } = useContext(BannerContext);
 
@@ -83,7 +91,11 @@ const Banner = () => {
       <button onClick={handleEdit} className={styles.editButton}>
         Edit Banner
       </button>
-      <CountDownTimer bannerEndTime={bannerEndTime} />
+      <CountDownTimer
+        bannerEndTime={bannerEndTime}
+        timeLeft={timeLeft}
+        setTimeLeft={setTimeLeft}
+      />
       <div className={styles.description}>{bannerDescription}</div>
     </div>
   );
