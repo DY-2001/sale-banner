@@ -33,7 +33,7 @@ const Banner = () => {
 
   useEffect(() => {
     const fetchBannerData = async () => {
-      const response = await fetch("http://localhost:5000/banner", {
+      const response = await fetch("https://sale-banner.onrender.com/banner", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

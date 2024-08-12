@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   const handleSaveBannerDetails = () => {
     const saveBannerData = async () => {
-      await fetch("http://localhost:5000/banner", {
+      await fetch("https://sale-banner.onrender.com/banner", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
