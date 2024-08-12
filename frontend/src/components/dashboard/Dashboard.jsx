@@ -12,18 +12,11 @@ const Dashboard = () => {
     bannerEndTime: initEndTime,
     bannerVisibility: initVisibility,
   } = initBanner;
-
+  const now = new Date().getTime();
   const [bannerLink, setBannerLink] = useState(initBannerLink);
   const [description, setDescription] = useState(initDescription);
-  const [endTime, setEndTime] = useState(initEndTime);
+  const [endTime, setEndTime] = useState(now);
   const [visibility, setVisibility] = useState(initVisibility);
-
-  useEffect(() => {
-    setBannerLink(initBannerLink);
-    setDescription(initDescription);
-    setEndTime(initEndTime);
-    setVisibility(initVisibility);
-  }, [initBannerLink, initDescription, initEndTime, initVisibility]);
 
   const handleEndTimeChange = (e) => {
     const selectedDateTime = e.target.value;
@@ -75,7 +68,11 @@ const Dashboard = () => {
         <label className={styles.inputLabel}>Banner End Time</label>
         <input
           type="datetime-local"
-          value={new Date(endTime).toISOString().slice(0, 16)}
+          value={new Date(
+            new Date(endTime).getTime() - new Date().getTimezoneOffset() * 60000
+          )
+            .toISOString()
+            .slice(0, 16)}
           onChange={handleEndTimeChange}
           className={styles.inputField}
         />
