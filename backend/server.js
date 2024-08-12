@@ -20,7 +20,7 @@ app.post("/banner", (req, res) => {
   const { bannerVisibility, bannerDescription, bannerEndTime, bannerLink } =
     req.body;
   const query =
-    "UPDATE banner SET visible = ?, description = ?, timer = ?, link = ? WHERE id = 1";
+    "UPDATE banner SET bannerVisibility = ?, bannerDescription = ?, bannerEndTime = ?, bannerLink = ? WHERE id = 1";
 
   db.query(
     query,
