@@ -1,11 +1,11 @@
 import styles from "./Dashboard.module.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BannerContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const navigator = useNavigate();
-  const { initBanner, setInitBanner } = useContext(BannerContext);
+  const { initBanner } = useContext(BannerContext);
   const {
     bannerLink: initBannerLink,
     bannerDescription: initDescription,
@@ -17,6 +17,13 @@ const Dashboard = () => {
   const [description, setDescription] = useState(initDescription);
   const [endTime, setEndTime] = useState(initEndTime);
   const [visibility, setVisibility] = useState(initVisibility);
+
+  useEffect(() => {
+    setBannerLink(initBannerLink);
+    setDescription(initDescription);
+    setEndTime(initEndTime);
+    setVisibility(initVisibility);
+  }, [initBannerLink, initDescription, initEndTime, initVisibility]);
 
   const handleEndTimeChange = (e) => {
     const selectedDateTime = e.target.value;
