@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const db = require("./db/database");
+const pool = require("./db/database");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/banner", (req, res) => {
-  db.query("SELECT * FROM banner", (err, result) => {
+  pool.query("SELECT * FROM banner", (err, result) => {
     if (err) console.log(err);
     res.json(result);
   });
@@ -22,7 +22,7 @@ app.post("/banner", (req, res) => {
   const query =
     "UPDATE banner SET bannerVisibility = ?, bannerDescription = ?, bannerEndTime = ?, bannerLink = ? WHERE id = 1";
 
-  db.query(
+    pool.query(
     query,
     [bannerVisibility, bannerDescription, bannerEndTime, bannerLink],
     (err) => {
