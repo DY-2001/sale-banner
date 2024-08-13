@@ -13,6 +13,7 @@ const zeroTime = {
 
 const Banner = () => {
   const [timeLeft, setTimeLeft] = useState(zeroTime);
+  const [dataCome, setDataCome] = useState(false);
   const navigate = useNavigate();
   const { initBanner, setInitBanner } = useContext(BannerContext);
 
@@ -41,9 +42,18 @@ const Banner = () => {
       });
       const data = await response.json();
       setInitBanner(data[0]);
+      setDataCome(true);
     };
     fetchBannerData();
   }, []);
+
+  if (!dataCome) {
+    return (
+      <div className={styles.noBanner}>
+        <div>Loading...</div>
+      </div>
+    );
+  }
 
   if (!bannerLink) {
     return (
